@@ -24,46 +24,13 @@ void updateLocation() async {
   print(await Geolocator.isLocationServiceEnabled());
 
   await trackLocationInBackground(myLocationSettings, flutterLocalNotificationsPlugin);
-
-  // try {
-  //   print("Reach 1");
-  //   Position? position;
-  //   bool gotCurrentPosition = false;
-  //   int repeatedCount = 0;
-
-  //   while (!gotCurrentPosition && repeatedCount <= 10) {
-  //     try {
-  //       position = await Geolocator.getCurrentPosition(locationSettings: myLocationSettings);
-  //       gotCurrentPosition = true;
-  //     } catch (e) {
-  //       print("Timed Out");
-  //       repeatedCount++;
-  //     }
-  //   }
-  //   print("Reach 2");
-  //   print(
-  //       "Updated Latitude: ${position?.latitude}, Longitude: ${position?.longitude}, time: ${DateTime.now()}");
-
-  //   LocationData data = LocationData(
-  //       latitude: position?.latitude, longitude: position?.longitude, time: DateTime.now());
-  //   // save details to shared preferences
-  //   await storeInSharedPreferencesStringList(data.toString(), 100);
-
-  //   Noti.showNotification(
-  //       title: "Location updated",
-  //       body: "Latitude: ${position?.latitude}, Longitude: ${position?.longitude}",
-  //       fln: flutterLocalNotificationsPlugin);
-  //   // homeCubitInstance.updatePosition(position);
-  // } catch (e) {
-  //   print('Error getting location: $e');
-  // }
 }
 
 // for ios
 void configureBackgroundFetch() {
   BackgroundFetch.configure(
     BackgroundFetchConfig(
-        minimumFetchInterval: 15, // minutes (min is 15)
+        minimumFetchInterval: 5, // minutes (min is 15)
         stopOnTerminate: false,
         enableHeadless: true,
         requiresCharging: false),
