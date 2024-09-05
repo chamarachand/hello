@@ -58,8 +58,8 @@ void main() async {
 
   Noti.initialize(flutterLocalNotificationsPlugin);
 
-  Geolocator.requestPermission();
-  if (await needToRequestAlwaysPermission()) Geolocator.openLocationSettings();
+  await Geolocator.requestPermission();
+  if (await needToRequestAlwaysPermission()) await Geolocator.openLocationSettings();
 
   print("reached here");
 }
